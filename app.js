@@ -1,16 +1,32 @@
-const express = require('express');
-const http = require('http');
-const path = require('path');
+const app = require('express')();
+const http = require('http').Server(app);
+const io = require('socket.io')(http, {pingTimeout: 2000, pingInterval: 1000});
 
-const app = express();
+let connectedUsers = {};
 
-app.use(express.static(path.join(__dirname, 'dist')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
+io.on('connection', (socket) => {
+
+  let user = {};
+  user.color = makeRandomColor();
+  user.id = socket.id;
+  connectedUsers[socket.id] = user;
+
+  io.emit('user', connectedUsers);
+
+  socket.on('disconnect', function() {
+    delete connectedUsers[socket.id];
+    io.emit('user', connectedUsers);
+  });
+
+  socket.on('add-message', (message) => {
+    io.emit('message', {user: connectedUsers[socket.id], text: message});
+  });
 });
 
-const port = process.env.PORT || 3001;
-app.set('port', port);
+http.listen(process.env.PORT || 3000, () => {
+  console.log('started on port 3000');
+});
 
-const server = http.createServer(app);
-server.listen(port, () => console.log('Running'));
+function makeRandomColor() {
+  return '#'+Math.random().toString(16).slice(-3);
+}
