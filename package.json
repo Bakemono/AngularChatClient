@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "ng": "ng",
-    "dev": "ng serve",
+    "dev": "ng serve --proxy-config proxy.conf.json",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -35,7 +35,6 @@
     "express": "^4.16.2",
     "path": "^0.12.7",
     "rxjs": "^5.5.2",
-    "socket.io": "^2.0.4",
     "socket.io-client": "^2.0.4",
     "zone.js": "^0.8.14"
   },

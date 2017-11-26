@@ -8,7 +8,6 @@ import * as io from 'socket.io-client';
 export class ChatService {
 
   private url = 'https://pacific-lake-56635.herokuapp.com';
-  //private url = '/';
   private socket;
 
   constructor() { }

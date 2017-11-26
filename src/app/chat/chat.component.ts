@@ -16,7 +16,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   messagesSubscription: any;
   usersSubscription: any;
   users: string[] = [];
-  menuOpen: boolean = true;
+  menuOpen: boolean = false;
 
   constructor(private chatService: ChatService) { }
 

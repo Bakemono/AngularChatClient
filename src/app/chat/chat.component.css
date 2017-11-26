@@ -1,10 +1,10 @@
-
-body {
-  overflow-y: hidden !important;
-}
 .container-fluid {
   height: 100vh;
-  overflow: hidden;
+}
+form button {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
 }
 #chat-input {
     width: 100%;
@@ -26,15 +26,29 @@ body {
   color: white;
   cursor: pointer;
 }
+#users-list-wrapper.closed {
+  background-color: white;
+  opacity: 0.1;
+}
+.fa.closed {
+  color: #663399 !important;
+}
 #users-list-wrapper a {
   padding-top: 0;
 }
 @media (min-width: 768px) {
-  #users-list-wrapper, #messages-wrapper {
-    height: calc(100vh - 50px);
+  #users-list-wrapper {
+    height: calc(100vh - 50px) !important;
   }
   #messages-wrapper {
-    padding-left: 20px !important;
+    padding-left: 70px !important;
+  }
+  #users-list-wrapper.closed {
+    background-color: #663399 !important;
+    opacity: 1;
+  }
+  .fa.closed {
+    color: white !important;
   }
   .users-column.open {
     width: 200px;
@@ -45,11 +59,13 @@ body {
 }
 .users-column {
   width: 100%;
+  z-index: 1000;
+  position: absolute;
 }
 #users-header a {
   margin-right: 10px;
+  opacity: 1 !important;
 }
-
 
 #users-list {
   margin-left: 20px;
@@ -66,6 +82,10 @@ body {
   padding: 10px 10px 10px 0;
   overflow: auto;
 }
+#messages-wrapper {
+  height: calc(100vh - 50px);
+}
+
 #messages-wrapper::-webkit-scrollbar {
     display: none;
 }
