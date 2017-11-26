@@ -7,7 +7,7 @@ import * as io from 'socket.io-client';
 @Injectable()
 export class ChatService {
 
-  private url = '/';
+  private url = 'https://pacific-lake-56635.herokuapp.com';
   //private url = '/';
   private socket;
 
