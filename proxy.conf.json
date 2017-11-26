@@ -1,0 +1,8 @@
+{
+  "/": {
+    "target": "https://pacific-lake-56635.herokuapp.com",
+    "changeOrigin": true,
+    "logLevel": "info",
+    "secure": false
+  }
+}
