@@ -12,14 +12,13 @@ export class ChatService {
 
   constructor() { }
 
-  sendMessage(message){
+  sendMessage(message) {
     this.socket.emit('add-message', message);
   }
 
   getMessages() {
     let observable = new Observable(observer => {
       this.socket = io(this.url);
-      console.log('socket: ', this.socket);
       this.socket.on('message', (data) => {
         observer.next(data);
       });
@@ -32,7 +31,6 @@ export class ChatService {
 
   getUsers() {
     let observable = new Observable(observer => {
-      console.log('socket: ', this.socket);
       this.socket.on('user', (users) => {
         observer.next(users);
       });
@@ -43,5 +41,4 @@ export class ChatService {
     })
     return observable;
   }
-
 }

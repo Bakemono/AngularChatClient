@@ -6,7 +6,7 @@ import { ChatService } from './services/chat.service';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css']
+  styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit, OnDestroy {
 
@@ -46,15 +46,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   toggleMenu(event) {
-
-    // let parent = event.target.parentElement.parentElement.parentElement.parentElement;
-    // if(this.menuOpen) {
-    //   parent.classList.replace('col-md-3', 'col-md-1');
-    // } else {
-    //   parent.classList.replace('col-md-1', 'col-md-3');
-    // }
     this.menuOpen = !this.menuOpen;
-
   }
 
   sendMessage(){
@@ -72,5 +64,4 @@ export class ChatComponent implements OnInit, OnDestroy {
   private scrollToBottom(element) {
     element.scrollTop = element.scrollHeight;
   }
-
 }
